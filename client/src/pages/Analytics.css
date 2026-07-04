@@ -1,0 +1,198 @@
+/* ═══════════════════════════════════════════════
+   Analytics Dashboard Styles
+   ═══════════════════════════════════════════════ */
+
+.analytics-header {
+  margin-bottom: var(--space-xl);
+}
+
+.analytics-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+}
+
+.analytics-subtitle {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  margin-top: 2px;
+}
+
+/* ── KPI Cards ────────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.kpi-card {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  animation: fadeInUp 0.4s ease-out;
+  animation-fill-mode: backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.kpi-card:nth-child(1) { animation-delay: 0.05s; }
+.kpi-card:nth-child(1)::before { background: var(--gradient-primary); }
+.kpi-card:nth-child(2) { animation-delay: 0.1s; }
+.kpi-card:nth-child(2)::before { background: var(--gradient-warm); }
+.kpi-card:nth-child(3) { animation-delay: 0.15s; }
+.kpi-card:nth-child(3)::before { background: var(--gradient-success); }
+.kpi-card:nth-child(4) { animation-delay: 0.2s; }
+.kpi-card:nth-child(4)::before { background: var(--gradient-cool); }
+
+.kpi-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kpi-icon-products {
+  background: rgba(99, 102, 241, 0.12);
+  color: #818cf8;
+}
+
+.kpi-icon-rating {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+}
+
+.kpi-icon-inventory {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+}
+
+.kpi-icon-categories {
+  background: rgba(6, 182, 212, 0.12);
+  color: #22d3ee;
+}
+
+.kpi-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kpi-value {
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.kpi-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.kpi-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.kpi-sub {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+/* ── Charts Grid ──────────────────────────────── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.chart-card {
+  padding: var(--space-lg);
+  animation: fadeInUp 0.4s ease-out;
+  animation-fill-mode: backwards;
+}
+
+.chart-card:nth-child(1) { animation-delay: 0.1s; }
+.chart-card:nth-child(2) { animation-delay: 0.15s; }
+.chart-card:nth-child(3) { animation-delay: 0.2s; }
+.chart-card:nth-child(4) { animation-delay: 0.25s; }
+
+.chart-title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.chart-container {
+  width: 100%;
+}
+
+/* ── Chart Tooltip ────────────────────────────── */
+.chart-tooltip {
+  padding: var(--space-sm) var(--space-md) !important;
+  min-width: 100px;
+}
+
+.chart-tooltip-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  text-transform: capitalize;
+}
+
+.chart-tooltip-value {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+/* ── Recharts Overrides ───────────────────────── */
+.recharts-legend-item-text {
+  color: var(--text-secondary) !important;
+  text-transform: capitalize;
+}
+
+.recharts-default-tooltip {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 1200px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi-value {
+    font-size: var(--font-size-2xl);
+  }
+}
