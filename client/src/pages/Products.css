@@ -7,7 +7,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  min-width: 0;
 }
 
 .products-title {
@@ -119,6 +120,7 @@
 /* ── Category Filters ─────────────────────────── */
 .products-filters {
   margin-bottom: var(--space-lg);
+  min-width: 0;
 }
 
 .category-filters {

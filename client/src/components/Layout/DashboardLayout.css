@@ -181,6 +181,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 0;
   transition: margin-left var(--transition-base);
 }
 
@@ -276,6 +277,7 @@
   animation: fadeIn 0.3s ease-out;
   overflow-x: hidden;
   max-width: 100%;
+  min-width: 0;
 }
 
 /* ── Responsive ───────────────────────────────── */
