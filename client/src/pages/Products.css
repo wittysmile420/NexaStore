@@ -230,7 +230,7 @@
 .product-card-img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 160px;
   overflow: hidden;
   background: var(--bg-tertiary);
 }
@@ -646,7 +646,7 @@
   }
 
   .product-card-img-wrap {
-    aspect-ratio: 3 / 2;
+    height: 120px;
   }
 
   .product-card-body {
@@ -715,7 +715,7 @@
   }
 
   .product-card-img-wrap {
-    aspect-ratio: 1 / 1;
+    height: 100px;
   }
 
   .product-card-meta {
@@ -759,7 +759,7 @@
   }
 
   .product-card-img-wrap {
-    aspect-ratio: 4 / 3;
+    height: 140px;
   }
 }
 
