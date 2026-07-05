@@ -274,6 +274,8 @@
   flex: 1;
   padding: var(--space-xl);
   animation: fadeIn 0.3s ease-out;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* ── Responsive ───────────────────────────────── */
