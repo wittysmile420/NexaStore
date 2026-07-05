@@ -10,9 +10,11 @@ const productRoutes = require('./routes/products');
 
 const app = express();
 
+const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000'],
+  origin: [clientUrl, 'http://localhost:3000'],
   credentials: true,
 }));
 app.use(express.json());
