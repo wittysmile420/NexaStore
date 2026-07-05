@@ -34,3 +34,16 @@ For the Table View, we maintain a `columns` state array.
 - We pass this array to the `<ColumnCustomizer />` component.
 - The customizer returns the mutated array when the user clicks checkboxes or drags items.
 - The table header and table rows literally map over this `columns` array. If `col.visible` is false, it returns `null` (rendering nothing). This seamlessly handles hiding/showing data dynamically.
+
+## 6. View Mode Persistence & Responsive View Toggle
+Users can toggle between Grid View and Table View.
+- **Persistence**: We use `localStorage.getItem('nexastore_viewMode')` to remember the user's preference. This ensures that if they switch to Table View and refresh, it stays in Table View.
+- **Responsive Override**: A `useEffect` listens to `window.addEventListener('resize', ...)` to track `isMobile` (`window.innerWidth <= 768`).
+- Since Table View is not mobile-friendly due to extreme horizontal scrolling constraints, if `isMobile` becomes true, we forcibly hide the View Toggle buttons and automatically render the Grid View. We do *not* overwrite their `localStorage` preference, so if they rotate their device or move to a desktop, their Table View preference returns.
+
+## 7. Complex Responsive Layout & Flex Blowout Prevention
+The product listing grid (`.products-grid`) employs advanced CSS handling for different viewports:
+- **Desktop/Tablet**: Uses `grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))` to create a fluid, auto-flowing grid.
+- **Mobile (<480px)**: The grid is forced to a single column (`1fr`). We switch the `.product-card` to a horizontal `display: flex; flex-direction: row;` layout. This is the e-commerce standard for mobile, preventing vertical images from blowing up to fill the screen width (which happens if `aspect-ratio: 4 / 3` is used on a single full-width column).
+- **Flexbox Blowout Bug Fix**: We encountered a critical CSS bug where a scrolling horizontal row of category chips (`flex-wrap: nowrap`) forced the entire HTML page to expand beyond the mobile viewport (causing the browser to zoom out and make text microscopic).
+- **The Fix**: We explicitly applied `min-width: 0` to `.dashboard-main`, `.content-area`, and `.products-filters`. In Flexbox, a flex child's default minimum width is `auto` (meaning it won't shrink below the minimum size of its content). By setting `min-width: 0`, we instruct the flex containers that they are allowed to shrink smaller than their content, which successfully constrains the scrolling chip container to the physical screen width.
