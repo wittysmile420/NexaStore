@@ -26,6 +26,7 @@ export default function Products() {
   const initialView = searchParams.get('view') || 'grid';
 
   // Local state
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
@@ -51,6 +52,10 @@ export default function Products() {
     api.get('/products/categories')
       .then(setCategories)
       .catch(console.error);
+      
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Build query string - useMemo for Performance Optimization
@@ -223,8 +228,9 @@ export default function Products() {
         </div>
 
         {/* View Toggle + Column Customizer */}
-        <div className="products-view-group">
-          {viewMode === 'table' && (
+        {!isMobile && (
+          <div className="products-view-group">
+            {viewMode === 'table' && (
             <ColumnCustomizer
               visibleColumns={visibleColumns}
               columnOrder={columnOrder}
@@ -260,6 +266,7 @@ export default function Products() {
             </button>
           </div>
         </div>
+        )}
       </div>
 
       {/* Category Filter */}
@@ -298,7 +305,7 @@ export default function Products() {
           <h3>No products found</h3>
           <p>Try adjusting your search or filters</p>
         </div>
-      ) : viewMode === 'grid' ? (
+      ) : (viewMode === 'grid' || isMobile) ? (
         <div className="products-grid">
           {products.map(product => (
             <ProductCard
