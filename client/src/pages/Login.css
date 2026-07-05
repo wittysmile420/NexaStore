@@ -250,9 +250,65 @@
 @media (max-width: 480px) {
   .login-container {
     padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+  }
+
+  .login-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .login-logo-text {
+    font-size: var(--font-size-xl);
   }
 
   .login-quick-buttons {
     flex-direction: column;
   }
 }
+
+@media (max-width: 360px) {
+  .login-page {
+    padding: var(--space-sm);
+  }
+
+  .login-container {
+    padding: var(--space-md);
+  }
+
+  .login-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .login-subtitle {
+    font-size: var(--font-size-xs);
+  }
+
+  .login-submit {
+    padding: 10px;
+    font-size: var(--font-size-sm);
+  }
+
+  .login-quick-role {
+    font-size: var(--font-size-xs);
+  }
+
+  .login-quick-creds {
+    font-size: 10px;
+  }
+
+  .login-quick-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .login-bg-orb-1 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .login-bg-orb-2 {
+    width: 200px;
+    height: 200px;
+  }
+}
+

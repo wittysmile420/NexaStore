@@ -195,4 +195,45 @@
   .kpi-value {
     font-size: var(--font-size-2xl);
   }
+
+  .analytics-title {
+    font-size: var(--font-size-xl);
+  }
 }
+
+@media (max-width: 480px) {
+  .kpi-card {
+    padding: var(--space-md);
+    gap: var(--space-sm);
+  }
+
+  .kpi-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .kpi-value {
+    font-size: var(--font-size-xl);
+  }
+
+  .kpi-label {
+    font-size: var(--font-size-xs);
+  }
+
+  .chart-card {
+    padding: var(--space-md);
+  }
+
+  .chart-title {
+    font-size: var(--font-size-sm);
+  }
+
+  .analytics-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .analytics-subtitle {
+    font-size: var(--font-size-xs);
+  }
+}
+
